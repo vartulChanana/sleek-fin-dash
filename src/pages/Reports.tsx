@@ -92,12 +92,12 @@ export const Reports = () => {
         
         {/* Filters */}
         <div className="flex space-x-3">
-          <Select value={filterByMonth} onValueChange={setFilterByMonth}>
+          <Select value={filterByMonth || "all"} onValueChange={(value) => setFilterByMonth(value === "all" ? "" : value)}>
             <SelectTrigger className="w-40">
               <SelectValue placeholder="Filter by month" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All months</SelectItem>
+              <SelectItem value="all">All months</SelectItem>
               {Array.from(new Set(stats.transactions.map(t => t.date.slice(0, 7)))).map(month => (
                 <SelectItem key={month} value={month}>
                   {format(new Date(month + '-01'), 'MMMM yyyy')}
