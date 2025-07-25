@@ -23,7 +23,7 @@ export const SettingsDialog = () => {
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto z-[100]">
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
             <Settings className="w-5 h-5" />

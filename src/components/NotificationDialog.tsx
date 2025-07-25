@@ -65,7 +65,7 @@ export const NotificationDialog = () => {
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-md z-[100]">
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2">
             <Bell className="w-5 h-5" />
