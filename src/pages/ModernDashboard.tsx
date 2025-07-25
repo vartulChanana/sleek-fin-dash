@@ -39,7 +39,7 @@ export const ModernDashboard = () => {
       <CardContent>
         <div className="flex items-baseline space-x-3">
           <div className={`text-3xl font-bold ${textColor}`}>
-            ${value.toLocaleString()}
+            ₹{value.toLocaleString()}
           </div>
           {trend && (
             <div className="flex items-center space-x-1">
@@ -264,7 +264,7 @@ export const ModernDashboard = () => {
                     <span className={`text-xl font-bold ${
                       transaction.type === 'income' ? 'text-income' : 'text-expense'
                     }`}>
-                      {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toLocaleString()}
+                      {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString()}
                     </span>
                     
                     <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">

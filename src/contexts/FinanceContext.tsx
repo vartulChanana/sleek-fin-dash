@@ -56,7 +56,7 @@ export const FinanceProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setTransactions(prev => [newTransaction, ...prev]);
     toast({
       title: "Transaction Added",
-      description: `${transaction.type === 'income' ? '+' : '-'}$${transaction.amount.toLocaleString()} - ${transaction.title}`,
+      description: `${transaction.type === 'income' ? '+' : '-'}₹${transaction.amount.toLocaleString()} - ${transaction.title}`,
     });
   };
 

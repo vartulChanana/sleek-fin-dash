@@ -41,7 +41,7 @@ export const ModernSidebar = () => {
             <div className="w-2 h-2 bg-primary rounded-full pulse-glow"></div>
           </div>
           <p className="text-2xl font-bold text-balance mb-1">
-            ${stats.totalBalance.toLocaleString()}
+            ₹{stats.totalBalance.toLocaleString()}
           </p>
           <div className="flex items-center space-x-1 text-xs">
             <span className={`px-2 py-1 rounded-full ${
@@ -65,7 +65,7 @@ export const ModernSidebar = () => {
             </div>
             <p className="text-sm text-muted-foreground">Income</p>
             <p className="text-lg font-bold text-income">
-              ${stats.totalIncome.toLocaleString()}
+              ₹{stats.totalIncome.toLocaleString()}
             </p>
           </div>
           
@@ -77,7 +77,7 @@ export const ModernSidebar = () => {
             </div>
             <p className="text-sm text-muted-foreground">Expenses</p>
             <p className="text-lg font-bold text-expense">
-              ${stats.totalExpenses.toLocaleString()}
+              ₹{stats.totalExpenses.toLocaleString()}
             </p>
           </div>
         </div>
@@ -117,11 +117,11 @@ export const ModernSidebar = () => {
         ))}
       </nav>
 
-      {/* Footer */}
-      <div className="absolute bottom-6 left-6 right-6">
-        <div className="glass rounded-xl p-4 text-center">
-          <p className="text-xs text-muted-foreground mb-2">Total Transactions</p>
-          <p className="text-2xl font-bold gradient-text">{stats.transactions.length}</p>
+      {/* Transaction Summary - moved to prevent overlap */}
+      <div className="px-4 mb-6">
+        <div className="glass rounded-xl p-3 text-center">
+          <p className="text-xs text-muted-foreground mb-1">Total Transactions</p>
+          <p className="text-lg font-bold gradient-text">{stats.transactions.length}</p>
         </div>
       </div>
     </div>

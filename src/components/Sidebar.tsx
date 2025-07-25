@@ -36,7 +36,7 @@ export const Sidebar = () => {
             <DollarSign className="w-4 h-4 text-balance" />
           </div>
           <p className="text-lg font-bold text-balance">
-            ${stats.totalBalance.toLocaleString()}
+            ₹{stats.totalBalance.toLocaleString()}
           </p>
         </div>
         
@@ -47,7 +47,7 @@ export const Sidebar = () => {
               <span className="text-xs text-muted-foreground">Income</span>
             </div>
             <p className="text-sm font-semibold text-income">
-              ${stats.totalIncome.toLocaleString()}
+              ₹{stats.totalIncome.toLocaleString()}
             </p>
           </div>
           
@@ -57,7 +57,7 @@ export const Sidebar = () => {
               <span className="text-xs text-muted-foreground">Expenses</span>
             </div>
             <p className="text-sm font-semibold text-expense">
-              ${stats.totalExpenses.toLocaleString()}
+              ₹{stats.totalExpenses.toLocaleString()}
             </p>
           </div>
         </div>

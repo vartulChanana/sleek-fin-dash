@@ -37,7 +37,7 @@ export const Dashboard = () => {
       <CardContent>
         <div className="flex items-center space-x-2">
           <div className={`text-2xl font-bold ${textColor}`}>
-            ${value.toLocaleString()}
+            ₹{value.toLocaleString()}
           </div>
           {trend && (
             <Badge variant={trend === 'up' ? 'default' : 'destructive'} className="text-xs">
@@ -153,7 +153,7 @@ export const Dashboard = () => {
                     <span className={`text-lg font-bold ${
                       transaction.type === 'income' ? 'text-income' : 'text-expense'
                     }`}>
-                      {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toLocaleString()}
+                      {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString()}
                     </span>
                     
                     <div className="flex space-x-1">

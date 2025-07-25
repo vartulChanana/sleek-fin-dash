@@ -117,7 +117,7 @@ export const Reports = () => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-balance">
-              ${stats.totalBalance.toLocaleString()}
+              ₹{stats.totalBalance.toLocaleString()}
             </div>
           </CardContent>
         </Card>
@@ -179,7 +179,7 @@ export const Reports = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip formatter={(value) => [`$${Number(value).toLocaleString()}`, 'Amount']} />
+                <Tooltip formatter={(value) => [`₹${Number(value).toLocaleString()}`, 'Amount']} />
                 <Bar dataKey="amount" fill={COLORS.primary} />
               </BarChart>
             </ResponsiveContainer>
@@ -209,7 +209,7 @@ export const Reports = () => {
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value) => [`$${Number(value).toLocaleString()}`, 'Amount']} />
+                <Tooltip formatter={(value) => [`₹${Number(value).toLocaleString()}`, 'Amount']} />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
@@ -228,7 +228,7 @@ export const Reports = () => {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
               <YAxis />
-              <Tooltip formatter={(value) => [`$${Number(value).toLocaleString()}`, '']} />
+              <Tooltip formatter={(value) => [`₹${Number(value).toLocaleString()}`, '']} />
               <Legend />
               <Line 
                 type="monotone" 
