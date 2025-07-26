@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Bell, Settings, User, Search, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { useAuth } from '@/contexts/AuthContext';
+import { NotificationDialog } from './NotificationDialog';
+import { SettingsDialog } from './SettingsDialog';
 
 export const ModernTopbar = () => {
   const { user } = useAuth();
+  const [searchQuery, setSearchQuery] = useState('');
   return (
     <header className="h-20 glass border-b border-border/30 shadow-lg">
       <div className="h-full flex items-center justify-between px-8">
@@ -17,6 +20,14 @@ export const ModernTopbar = () => {
             <Input
               placeholder="Search transactions, categories..."
               className="pl-12 h-12 glass border-border/50 focus:border-primary/50 rounded-2xl text-foreground placeholder:text-muted-foreground bg-background/50"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && searchQuery.trim()) {
+                  // For now, just show an alert. You can implement actual search logic here
+                  alert(`Searching for: ${searchQuery}`);
+                }
+              }}
             />
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
               <Badge variant="secondary" className="text-xs bg-muted/50">
@@ -38,17 +49,10 @@ export const ModernTopbar = () => {
           </div>
 
           {/* Notifications */}
-          <Button variant="ghost" size="icon" className="relative h-12 w-12 rounded-2xl hover:bg-muted/30 group">
-            <Bell className="w-5 h-5 transition-colors group-hover:text-primary" />
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-primary to-primary-glow rounded-full text-xs font-bold text-white flex items-center justify-center shadow-neon">
-              3
-            </span>
-          </Button>
+          <NotificationDialog />
           
           {/* Settings */}
-          <Button variant="ghost" size="icon" className="h-12 w-12 rounded-2xl hover:bg-muted/30 group">
-            <Settings className="w-5 h-5 transition-all duration-300 group-hover:text-primary group-hover:rotate-90" />
-          </Button>
+          <SettingsDialog />
           
           {/* Profile */}
           <div className="flex items-center space-x-3 pl-4 border-l border-border/30">

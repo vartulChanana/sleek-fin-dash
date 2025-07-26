@@ -33,8 +33,8 @@ export const SettingsDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="hover:bg-muted/50 transition-colors">
-          <Settings className="w-5 h-5" />
+        <Button variant="ghost" size="icon" className="h-12 w-12 rounded-2xl hover:bg-muted/30 group">
+          <Settings className="w-5 h-5 transition-all duration-300 group-hover:text-primary group-hover:rotate-90" />
         </Button>
       </DialogTrigger>
       

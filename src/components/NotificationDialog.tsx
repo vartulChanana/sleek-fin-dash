@@ -52,15 +52,12 @@ export const NotificationDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative hover:bg-muted/50 transition-colors">
-          <Bell className="w-5 h-5" />
+        <Button variant="ghost" size="icon" className="relative h-12 w-12 rounded-2xl hover:bg-muted/30 group">
+          <Bell className="w-5 h-5 transition-colors group-hover:text-primary" />
           {unreadCount > 0 && (
-            <Badge 
-              variant="destructive" 
-              className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
-            >
+            <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-primary to-primary-glow rounded-full text-xs font-bold text-white flex items-center justify-center shadow-neon">
               {unreadCount}
-            </Badge>
+            </span>
           )}
         </Button>
       </DialogTrigger>
