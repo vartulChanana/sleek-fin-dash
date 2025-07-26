@@ -3,8 +3,10 @@ import { Bell, Settings, User, Search, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { useAuth } from '@/contexts/AuthContext';
 
 export const ModernTopbar = () => {
+  const { user } = useAuth();
   return (
     <header className="h-20 glass border-b border-border/30 shadow-lg">
       <div className="h-full flex items-center justify-between px-8">
@@ -51,8 +53,15 @@ export const ModernTopbar = () => {
           {/* Profile */}
           <div className="flex items-center space-x-3 pl-4 border-l border-border/30">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-foreground">John Doe</p>
-              <p className="text-xs text-muted-foreground">Premium Member</p>
+              <p className="text-sm font-semibold text-foreground">
+                {user?.user_metadata?.first_name && user?.user_metadata?.last_name
+                  ? `${user.user_metadata.first_name} ${user.user_metadata.last_name}`
+                  : user?.email?.split('@')[0] || 'User'
+                }
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {user ? 'Premium Member' : 'Guest'}
+              </p>
             </div>
             <div className="relative group cursor-pointer">
               <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-glow rounded-2xl flex items-center justify-center shadow-neon group-hover:shadow-glow transition-all duration-300">

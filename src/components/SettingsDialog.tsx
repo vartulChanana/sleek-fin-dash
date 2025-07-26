@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Settings, Moon, Sun, Bell, DollarSign, Palette, User, Shield, HelpCircle } from 'lucide-react';
+import React from 'react';
+import { Settings, Moon, Sun, Bell, DollarSign, Palette, User, Shield, HelpCircle, LogOut } from 'lucide-react';
+import { useSettings } from '@/contexts/SettingsContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Switch } from '@/components/ui/switch';
@@ -10,10 +12,23 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export const SettingsDialog = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const [notifications, setNotifications] = useState(true);
-  const [currency, setCurrency] = useState('INR');
-  const [language, setLanguage] = useState('en');
+  const { user, signOut } = useAuth();
+  const {
+    currency,
+    setCurrency,
+    language,
+    setLanguage,
+    darkMode,
+    setDarkMode,
+    notifications,
+    setNotifications,
+    budgetAlerts,
+    setBudgetAlerts,
+    weeklyReports,
+    setWeeklyReports,
+    largeTransactions,
+    setLargeTransactions,
+  } = useSettings();
 
   return (
     <Dialog>
@@ -135,23 +150,32 @@ export const SettingsDialog = () => {
                 
                 <Separator />
                 
-                <div className="space-y-3">
-                  <Label className="text-sm font-medium">Notification Types</Label>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm">Budget alerts</span>
-                      <Switch defaultChecked />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm">Weekly reports</span>
-                      <Switch defaultChecked />
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm">Large transactions</span>
-                      <Switch />
-                    </div>
-                  </div>
-                </div>
+                 <div className="space-y-3">
+                   <Label className="text-sm font-medium">Notification Types</Label>
+                   <div className="space-y-2">
+                     <div className="flex items-center justify-between">
+                       <span className="text-sm">Budget alerts</span>
+                       <Switch 
+                         checked={budgetAlerts}
+                         onCheckedChange={setBudgetAlerts}
+                       />
+                     </div>
+                     <div className="flex items-center justify-between">
+                       <span className="text-sm">Weekly reports</span>
+                       <Switch 
+                         checked={weeklyReports}
+                         onCheckedChange={setWeeklyReports}
+                       />
+                     </div>
+                     <div className="flex items-center justify-between">
+                       <span className="text-sm">Large transactions</span>
+                       <Switch 
+                         checked={largeTransactions}
+                         onCheckedChange={setLargeTransactions}
+                       />
+                     </div>
+                   </div>
+                 </div>
               </CardContent>
             </Card>
           </TabsContent>
@@ -168,23 +192,37 @@ export const SettingsDialog = () => {
                 <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-full mx-auto">
                   <User className="w-8 h-8 text-white" />
                 </div>
-                <div className="text-center">
-                  <h3 className="font-medium">John Doe</h3>
-                  <p className="text-sm text-muted-foreground">john.doe@example.com</p>
-                </div>
+                 <div className="text-center">
+                   <h3 className="font-medium">
+                     {user?.user_metadata?.first_name && user?.user_metadata?.last_name
+                       ? `${user.user_metadata.first_name} ${user.user_metadata.last_name}`
+                       : user?.email?.split('@')[0] || 'User'
+                     }
+                   </h3>
+                   <p className="text-sm text-muted-foreground">{user?.email || 'No email'}</p>
+                 </div>
                 
                 <Separator />
                 
-                <div className="space-y-2">
-                  <Button variant="outline" size="sm" className="w-full justify-start">
-                    <Shield className="w-4 h-4 mr-2" />
-                    Privacy & Security
-                  </Button>
-                  <Button variant="outline" size="sm" className="w-full justify-start">
-                    <HelpCircle className="w-4 h-4 mr-2" />
-                    Help & Support
-                  </Button>
-                </div>
+                 <div className="space-y-2">
+                   <Button variant="outline" size="sm" className="w-full justify-start">
+                     <Shield className="w-4 h-4 mr-2" />
+                     Privacy & Security
+                   </Button>
+                   <Button variant="outline" size="sm" className="w-full justify-start">
+                     <HelpCircle className="w-4 h-4 mr-2" />
+                     Help & Support
+                   </Button>
+                   <Button 
+                     variant="outline" 
+                     size="sm" 
+                     className="w-full justify-start text-destructive hover:text-destructive"
+                     onClick={signOut}
+                   >
+                     <LogOut className="w-4 h-4 mr-2" />
+                     Sign Out
+                   </Button>
+                 </div>
               </CardContent>
             </Card>
           </TabsContent>
