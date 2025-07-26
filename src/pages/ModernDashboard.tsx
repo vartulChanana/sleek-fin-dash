@@ -5,6 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useFinance } from '@/contexts/FinanceContext';
 import { format } from 'date-fns';
+import { BudgetPlannerDialog } from '@/components/BudgetPlannerDialog';
+import { FinancialGoalsDialog } from '@/components/FinancialGoalsDialog';
+import { InvestmentTrackerDialog } from '@/components/InvestmentTrackerDialog';
 
 export const ModernDashboard = () => {
   const { stats, deleteTransaction } = useFinance();
@@ -143,56 +146,62 @@ export const ModernDashboard = () => {
 
       {/* Quick Action Cards */}
       <div className="grid md:grid-cols-3 gap-6">
-        <Card className="glass border-border/50 hover-lift group">
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl">
-                <Target className="w-6 h-6 text-white" />
+        <FinancialGoalsDialog>
+          <Card className="glass border-border/50 hover-lift group cursor-pointer">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl">
+                  <Target className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-foreground">Set Financial Goal</h3>
+                  <p className="text-sm text-muted-foreground">Create savings targets</p>
+                </div>
+                <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Zap className="w-4 h-4" />
+                </Button>
               </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-foreground">Set Financial Goal</h3>
-                <p className="text-sm text-muted-foreground">Create savings targets</p>
-              </div>
-              <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                <Zap className="w-4 h-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </FinancialGoalsDialog>
 
-        <Card className="glass border-border/50 hover-lift group">
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl">
-                <CreditCard className="w-6 h-6 text-white" />
+        <BudgetPlannerDialog>
+          <Card className="glass border-border/50 hover-lift group cursor-pointer">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl">
+                  <CreditCard className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-foreground">Budget Planner</h3>
+                  <p className="text-sm text-muted-foreground">Manage spending limits</p>
+                </div>
+                <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Zap className="w-4 h-4" />
+                </Button>
               </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-foreground">Budget Planner</h3>
-                <p className="text-sm text-muted-foreground">Manage spending limits</p>
-              </div>
-              <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                <Zap className="w-4 h-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </BudgetPlannerDialog>
 
-        <Card className="glass border-border/50 hover-lift group">
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-4">
-              <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl">
-                <TrendingUp className="w-6 h-6 text-white" />
+        <InvestmentTrackerDialog>
+          <Card className="glass border-border/50 hover-lift group cursor-pointer">
+            <CardContent className="p-6">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl">
+                  <TrendingUp className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-foreground">Investment Tracker</h3>
+                  <p className="text-sm text-muted-foreground">Monitor portfolio</p>
+                </div>
+                <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Zap className="w-4 h-4" />
+                </Button>
               </div>
-              <div className="flex-1">
-                <h3 className="font-semibold text-foreground">Investment Tracker</h3>
-                <p className="text-sm text-muted-foreground">Monitor portfolio</p>
-              </div>
-              <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                <Zap className="w-4 h-4" />
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </InvestmentTrackerDialog>
       </div>
 
       {/* Recent Transactions with Modern Design */}
