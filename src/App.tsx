@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FinanceProvider } from "@/contexts/FinanceContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { SettingsProvider } from "@/contexts/SettingsContext";
+import { NotificationProvider } from "@/contexts/NotificationContext";
 import { ModernLayout } from "@/components/ModernLayout";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { ModernDashboard } from "@/pages/ModernDashboard";
@@ -21,7 +22,8 @@ const App = () => (
     <TooltipProvider>
       <AuthProvider>
         <SettingsProvider>
-          <FinanceProvider>
+          <NotificationProvider>
+            <FinanceProvider>
             <Toaster />
             <Sonner />
             <BrowserRouter>
@@ -52,7 +54,8 @@ const App = () => (
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
-          </FinanceProvider>
+            </FinanceProvider>
+          </NotificationProvider>
         </SettingsProvider>
       </AuthProvider>
     </TooltipProvider>
