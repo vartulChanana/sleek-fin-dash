@@ -1,73 +1,107 @@
-# Welcome to your Lovable project
+# 💸 Finance App
 
-## Project info
+Welcome to **Finance App** — a clean, modern personal finance manager that helps you track your money like a pro. Built with a focus on simplicity, responsiveness, and global accessibility, this app allows users to securely log in, manage transactions, switch between currencies, and use the interface in multiple languages.
 
-**URL**: https://lovable.dev/projects/a67e83e7-5e22-4469-b7f1-4116cd02898b
+🌐 **Live Demo**: [https://finance-app-ten-inky.vercel.app](https://finance-app-ten-inky.vercel.app)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+- 🔐 **Authentication** – Secure login/signup flow
+- 📊 **Dashboard** – Overview of balance, income, expenses, and recent activity
+- 💰 **Add Transactions** – Easily log income or expenses with categories
+- 🔁 **Recurring Bills** – Automatically track fixed monthly or weekly bills
+- 🎯 **Budgeting** – Set spending limits by category
+- 🏦 **Savings Pots** – Create savings goals and move money into them
+- 🌍 **Dynamic Currency Switching** – Change your default currency (₹, $, €, etc.)
+- 🈯 **Language Switching** – Switch the app’s language for a more native experience
+- 📱 **Responsive Design** – Optimized for both desktop and mobile
+- ⚡ **Fast & Intuitive UX** – Smooth animations and real-time updates
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a67e83e7-5e22-4469-b7f1-4116cd02898b) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
+| Layer        | Tech Used                      |
+|--------------|-------------------------------|
+| **Frontend** | Next.js / React                |
+| **Styling**  | Tailwind CSS + shadcn/ui       |
+| **Auth**     | Supabase (email/password)      |
+| **Database** | Supabase PostgreSQL            |
+| **State Mgmt**| React Query / Context API     |
+| **i18n**     | next-i18next (or similar lib)  |
+| **Deployment**| Vercel                         |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📦 Installation
 
-Follow these steps:
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Create a `.env.local` file in the root and add your environment variables:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXTAUTH_SECRET=your_auth_secret
+NEXT_PUBLIC_BASE_CURRENCY=INR
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+Then run the app locally:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Visit: `http://localhost:3000/auth`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🌐 Deployment
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Hosted on **Vercel**
+- Auto-deployment via GitHub integration
+- Add all required environment variables in Vercel project settings
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 📊 Roadmap
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- [ ] Weekly/monthly analytics charts
+- [ ] Export/import CSV for bank statements
+- [ ] Dark mode toggle
+- [ ] Mobile PWA support
+- [ ] Email notifications & reminders
+- [ ] Budget threshold alerts
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/a67e83e7-5e22-4469-b7f1-4116cd02898b) and click on Share -> Publish.
+## 🤝 Contributing
 
-## Can I connect a custom domain to my Lovable project?
+Contributions are welcome!
 
-Yes, you can!
+1. Fork this repo
+2. Create a new branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add your feature"`
+4. Push to your branch: `git push origin feature/your-feature`
+5. Open a Pull Request
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+Feel free to use it, remix it, and improve it — just give credit.
+
+---
+
+## 🙋‍♂️ About Me
+
+Made with <3 by **Vartul Chanana**  
+A CS student who builds cool stuff and likes being the center of attraction 😄  
+https://vartul-visions.vercel.app/
