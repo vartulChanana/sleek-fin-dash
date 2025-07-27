@@ -3,9 +3,12 @@ import { NavLink } from 'react-router-dom';
 import { Home, Plus, BarChart3, DollarSign, TrendingUp, TrendingDown, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useFinance } from '@/contexts/FinanceContext';
+import { useSettings } from '@/contexts/SettingsContext';
+import { formatCurrency } from '@/lib/currency';
 
 export const ModernSidebar = () => {
   const { stats } = useFinance();
+  const { currency } = useSettings();
 
   const navItems = [
     { to: '/', icon: Home, label: 'Dashboard', gradient: 'from-blue-500 to-purple-600' },
@@ -41,7 +44,7 @@ export const ModernSidebar = () => {
             <div className="w-2 h-2 bg-primary rounded-full pulse-glow"></div>
           </div>
           <p className="text-2xl font-bold text-balance mb-1">
-            ₹{stats.totalBalance.toLocaleString()}
+            {formatCurrency(stats.totalBalance, currency)}
           </p>
           <div className="flex items-center space-x-1 text-xs">
             <span className={`px-2 py-1 rounded-full ${
@@ -65,7 +68,7 @@ export const ModernSidebar = () => {
             </div>
             <p className="text-sm text-muted-foreground">Income</p>
             <p className="text-lg font-bold text-income">
-              ₹{stats.totalIncome.toLocaleString()}
+              {formatCurrency(stats.totalIncome, currency)}
             </p>
           </div>
           
@@ -77,7 +80,7 @@ export const ModernSidebar = () => {
             </div>
             <p className="text-sm text-muted-foreground">Expenses</p>
             <p className="text-lg font-bold text-expense">
-              ₹{stats.totalExpenses.toLocaleString()}
+              {formatCurrency(stats.totalExpenses, currency)}
             </p>
           </div>
         </div>

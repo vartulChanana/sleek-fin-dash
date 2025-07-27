@@ -4,6 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useFinance } from '@/contexts/FinanceContext';
+import { useSettings } from '@/contexts/SettingsContext';
+import { formatCurrency } from '@/lib/currency';
+import { translate } from '@/lib/translations';
 import { format } from 'date-fns';
 import { BudgetPlannerDialog } from '@/components/BudgetPlannerDialog';
 import { FinancialGoalsDialog } from '@/components/FinancialGoalsDialog';
@@ -11,6 +14,7 @@ import { InvestmentTrackerDialog } from '@/components/InvestmentTrackerDialog';
 
 export const ModernDashboard = () => {
   const { stats, deleteTransaction } = useFinance();
+  const { currency, language } = useSettings();
 
   const StatCard = ({ 
     title, 
@@ -42,7 +46,7 @@ export const ModernDashboard = () => {
       <CardContent>
         <div className="flex items-baseline space-x-3">
           <div className={`text-3xl font-bold ${textColor}`}>
-            ₹{value.toLocaleString()}
+            {formatCurrency(value, currency)}
           </div>
           {trend && (
             <div className="flex items-center space-x-1">
@@ -71,14 +75,14 @@ export const ModernDashboard = () => {
           <div className="flex items-center justify-between">
             <div className="space-y-2">
               <div className="flex items-center space-x-3">
-                <h1 className="text-4xl font-bold gradient-text">Financial Overview</h1>
+                <h1 className="text-4xl font-bold gradient-text">{translate('financialOverview', language)}</h1>
                 <div className="flex items-center space-x-2 px-3 py-1 glass rounded-full">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-muted-foreground">Live</span>
+                  <span className="text-sm text-muted-foreground">{translate('live', language)}</span>
                 </div>
               </div>
               <p className="text-lg text-muted-foreground">
-                Welcome back! Here's your complete financial snapshot.
+                {translate('welcomeBack', language)}
               </p>
             </div>
             <div className="text-right space-y-1">
@@ -100,7 +104,7 @@ export const ModernDashboard = () => {
       {/* Enhanced Stats Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <StatCard
-          title="Total Balance"
+          title={translate('totalBalance', language)}
           value={stats.totalBalance}
           icon={DollarSign}
           gradientFrom="from-primary"
@@ -111,7 +115,7 @@ export const ModernDashboard = () => {
         />
         
         <StatCard
-          title="Monthly Income"
+          title={translate('monthlyIncome', language)}
           value={stats.totalIncome}
           icon={TrendingUp}
           gradientFrom="from-income"
@@ -122,7 +126,7 @@ export const ModernDashboard = () => {
         />
         
         <StatCard
-          title="Monthly Expenses"
+          title={translate('monthlyExpenses', language)}
           value={stats.totalExpenses}
           icon={TrendingDown}
           gradientFrom="from-expense"
@@ -133,7 +137,7 @@ export const ModernDashboard = () => {
         />
         
         <StatCard
-          title="Savings Rate"
+          title={translate('savingsRate', language)}
           value={stats.totalIncome > 0 ? ((stats.totalBalance / stats.totalIncome) * 100) : 0}
           icon={PiggyBank}
           gradientFrom="from-purple-500"
@@ -273,7 +277,7 @@ export const ModernDashboard = () => {
                     <span className={`text-xl font-bold ${
                       transaction.type === 'income' ? 'text-income' : 'text-expense'
                     }`}>
-                      {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString()}
+                      {transaction.type === 'income' ? '+' : '-'}{formatCurrency(transaction.amount, currency)}
                     </span>
                     
                     <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
