@@ -8,8 +8,19 @@ import { NotificationDialog } from './NotificationDialog';
 import { SettingsDialog } from './SettingsDialog';
 
 export const ModernTopbar = () => {
-  const { user } = useAuth();
-  const [searchQuery, setSearchQuery] = useState('');
+   const { user } = useAuth();
+   const [searchQuery, setSearchQuery] = useState('');
+   
+   const handleSearch = () => {
+     if (searchQuery.trim()) {
+       // Navigate to a search results page or filter current data
+       console.log(`Searching for: ${searchQuery}`);
+       // You can implement navigation or filtering logic here
+       // Example: navigate(`/search?q=${encodeURIComponent(searchQuery)}`);
+       alert(`Search results for: "${searchQuery}"`);
+       setSearchQuery(''); // Clear search after search
+     }
+   };
   return (
     <header className="h-20 glass border-b border-border/30 shadow-lg">
       <div className="h-full flex items-center justify-between px-8">
@@ -23,11 +34,10 @@ export const ModernTopbar = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' && searchQuery.trim()) {
-                  // For now, just show an alert. You can implement actual search logic here
-                  alert(`Searching for: ${searchQuery}`);
-                }
-              }}
+                 if (e.key === 'Enter' && searchQuery.trim()) {
+                   handleSearch();
+                 }
+               }}
             />
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
               <Badge variant="secondary" className="text-xs bg-muted/50">

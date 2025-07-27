@@ -69,12 +69,12 @@ export const SettingsDialog = () => {
                     <SelectTrigger>
                       <SelectValue placeholder="Select currency" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="INR">₹ Indian Rupee (INR)</SelectItem>
-                      <SelectItem value="USD">$ US Dollar (USD)</SelectItem>
-                      <SelectItem value="EUR">€ Euro (EUR)</SelectItem>
-                      <SelectItem value="GBP">£ British Pound (GBP)</SelectItem>
-                    </SelectContent>
+                     <SelectContent className="z-[200]">
+                       <SelectItem value="INR">₹ Indian Rupee (INR)</SelectItem>
+                       <SelectItem value="USD">$ US Dollar (USD)</SelectItem>
+                       <SelectItem value="EUR">€ Euro (EUR)</SelectItem>
+                       <SelectItem value="GBP">£ British Pound (GBP)</SelectItem>
+                     </SelectContent>
                   </Select>
                 </div>
                 
@@ -84,12 +84,12 @@ export const SettingsDialog = () => {
                     <SelectTrigger>
                       <SelectValue placeholder="Select language" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="hi">Hindi</SelectItem>
-                      <SelectItem value="es">Spanish</SelectItem>
-                      <SelectItem value="fr">French</SelectItem>
-                    </SelectContent>
+                     <SelectContent className="z-[200]">
+                       <SelectItem value="en">English</SelectItem>
+                       <SelectItem value="hi">Hindi</SelectItem>
+                       <SelectItem value="es">Spanish</SelectItem>
+                       <SelectItem value="fr">French</SelectItem>
+                     </SelectContent>
                   </Select>
                 </div>
               </CardContent>
